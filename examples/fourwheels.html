@@ -48,13 +48,13 @@
 <script type='text/javascript'>//<![CDATA[ 
 // AGHHH JQUERY !!!!
 $(document).ready( function () {
-	var instance1 = SPINWHEEL.wheelOfDev('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
+	var instance1 = SPINWHEEL.wheelOfDestiny('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
 	instance1.SetOnCompleted(displayWinner1);
-	var instance2 = SPINWHEEL.wheelOfDev('container2',  ['Heads','Tails']);
+	var instance2 = SPINWHEEL.wheelOfDestiny('container2',  ['Heads','Tails']);
 	instance2.SetOnCompleted(displayWinner2);
-	var instance3 = SPINWHEEL.wheelOfDev('container3', ['Alpha','Beta', 'Gamma', 'Delta']);
+	var instance3 = SPINWHEEL.wheelOfDestiny('container3', ['Alpha','Beta', 'Gamma', 'Delta']);
 	instance3.SetOnCompleted(displayWinner3);
-	var instance4 = SPINWHEEL.wheelOfDev('container4', ['a','b','c','d','e','f','g','h','i','j','k','l']);
+	var instance4 = SPINWHEEL.wheelOfDestiny('container4', ['a','b','c','d','e','f','g','h','i','j','k','l']);
 	instance4.SetOnCompleted(displayWinner4);
 
 	instance1.SetTheme({"HighlightColour":"rgba(255,255,0,0.5)"});

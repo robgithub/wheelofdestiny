@@ -34,7 +34,7 @@ THE SOFTWARE.
 var SPINWHEEL = SPINWHEEL || {};
 
 // create the closure for the instance of the object
-SPINWHEEL.wheelOfDev = (function(targetId, list){
+SPINWHEEL.wheelOfDestiny = (function(targetId, list){
     // canvas layers array, properties get populated as they are dynamically created
     var canvases = [{"name":'canvasMain'}, {"name":'canvasWheel'}, {"name":'canvasForeground'},{"name":'canvasSelector'}];
     var fps = 14; // anything faster than 14 is unnoticable

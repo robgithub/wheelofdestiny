@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>wheel of destiny - four wheels Demo</title>
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type='text/javascript' src='../wheelofdestiny.js'></script>
+  
+  <style type='text/css'>
+    body {
+		margin: 0px;
+		padding: 0px;
+		background-color:white;
+		margin-left:20px;
+	}
+	#container1, #container2, #container3, #container4 { 
+		background-color:#ccc;
+		width:200px;
+		height:200px;
+		display:block;
+		float:left;
+		display:block;
+	}
+	
+	#container3, #container4 {
+		width:300px;
+		height:300px;
+	}
+
+	.output {    
+		float:left; 
+		margin-left:8px;
+	}
+
+	canvas {
+		position:absolute;
+	}
+	
+	.canvasForeground, .canvasWheel, .canvasSelector { 
+		display:none; 
+	}
+	
+	.instructions { clear:both; margin-top:12px;}
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+// AGHHH JQUERY !!!!
+$(document).ready( function () {
+	var instance1 = SPINWHEEL.wheelOfDev('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
+	instance1.SetOnCompleted(displayWinner1);
+	var instance2 = SPINWHEEL.wheelOfDev('container2',  ['true','false']);
+	instance2.SetOnCompleted(displayWinner2);
+	var instance3 = SPINWHEEL.wheelOfDev('container3', ['a','b','c','d','e','f','g','h','i','j']);
+	instance3.SetOnCompleted(displayWinner3);
+	var instance4 = SPINWHEEL.wheelOfDev('container4', ['a','b','c','d','e','f','g','h','i','j','k','l']);
+	instance4.SetOnCompleted(displayWinner4);
+
+	instance1.SetMinMaxSpins(1,1);
+	instance2.SetMinMaxSpins(1,1);
+	instance3.SetMinMaxSpins(1,1);
+	instance4.SetMinMaxSpins(1,1);
+	instance1.SetTheme({"Colour1":"rgba(255,255,0,0.5)"});
+	instance2.SetTheme({"FontColour2":"#fff"});
+	instance3.SetTheme({"WheelColour":"#fff", "somthingelse":0});
+	instance4.SetTheme({"Font":"Comic Sans MS"});
+	$('#btn-spin').click(function() {
+		$('.value').text('+');
+		instance1.Start();
+		instance2.Start();
+		instance3.Start();
+		instance4.Start();
+	});
+
+	function displayWinner1(winner) {
+		$('#info1').text(winner);
+		//instance2.SetFps(1);
+	}
+	function displayWinner2(winner) {
+		$('#info2').text(winner);
+		//instance3.SetFps(5);
+	}
+	function displayWinner3(winner) {
+		$('#info3').text(winner);
+		//instance4.SetFps(10);
+	}
+	function displayWinner4(winner) {
+		$('#info4').text(winner);
+		//instance1.SetFps(30);
+	}
+});
+//]]>  
+</script>
+</head>
+<body>
+<h1>Four Wheels Demo</h1>
+<br />
+<p class="more">More at the <a href="https://github.com/robgithub/wheelofdestiny">Wheel of Destiny repository</a></p> 
+Wheel of Destiny 
+<input type="button" id="btn-spin" value="spin"/><br/>
+<table>
+	<tr>
+		<td>1</td>
+		<td><div class="output" id="info1">_</div></td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td><div class="output" id="info2">_</div></td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td><div class="output" id="info3">_</div></td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td><div class="output" id="info4">_</div></td>
+	</tr>
+</table>
+
+<br />
+<div id="container1" ></div>
+<div id="container2" ></div>
+<div id="container3" ></div>
+<div id="container4" ></div>
+
+	<div class="instructions">
+		<h2>Instructions</h2>
+		<p>Click the spin button to spin all the wheels at once.</p>
+		<p>Results are populated when spinning stops.</p>
+		<br/>
+		<p><a href="https://github.com/robgithub/wheelofdestiny">wheelofdestiny</a> Is free for any use and is under the <a href="http://opensource.org/licenses/MIT">MIT licence</a>.</p>
+	</div>
+</body>
+  
+</html>
+
+

@@ -19,36 +19,43 @@ Just include the single JavaScript file **wheelofdestiny.js** and pass the const
 
 e.g.
 
-``` var myWheel = SPINWHEEL.wheelOfDestiny('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
+``` 
+var myWheel = SPINWHEEL.wheelOfDestiny('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
 ```
 
 Then to initiate a spin call **Start**
-``` myWheel.Start()
+``` 
+myWheel.Start()
 ```
 
 You can also hook a callback for when the wheel stops spinning and selects a result.
 
-``` myWheel.SetOnCompleted(function(winner){ alert('And the winner is ' + winner); } );
+``` 
+myWheel.SetOnCompleted(function(winner){ alert('And the winner is ' + winner); } );
 ```
 
 To hide the separate layers use the following css
-``` .canvasForeground, .canvasWheel, .canvasSelector { display:none; }
+``` 
+.canvasForeground, .canvasWheel, .canvasSelector { display:none; }
 ```
 
 ### Options
 
 Set the frames per second (FPS), default is 14
-``` myWheel.SetFps(10);
+``` 
+myWheel.SetFps(10);
 ```
 
 Set the minimum and the maximum number of spins, default is 1, 8
-``` myWheel.SetMinMaxSpins(1, 2);
+``` 
+myWheel.SetMinMaxSpins(1, 2);
 ```
 
 ### Theming
 
 Set a theme by passing a JavaScript object with the correct names, this means you can set as many or as few values as you wish.
-``` myWheel.SetTheme(
+``` 
+myWheel.SetTheme(
        {"WheelColour":"#000",
 		"PegColour1":"#f00", 
         "PegColour2":"#00f",
@@ -59,7 +66,8 @@ Set a theme by passing a JavaScript object with the correct names, this means yo
 ```
 
 Defaults are
-```     "Colour1":"#ff0", 
+```     
+"Colour1":"#ff0", 
         "Colour2":"#000",
         "WheelColour":"#fff",
         "FontColour1":"#000",

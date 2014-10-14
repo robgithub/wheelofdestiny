@@ -7,4 +7,6 @@ A html5 canvas &quot;Wheel of Fortune&quot;&trade; random selector
 
 [Live demo with four wheels](http://robgithub.github.io/wheelofdestiny/examples/fourwheels.html)
 
+[Customise your wheel - Live demo](http://robgithub.github.io/wheelofdestiny/examples/buildyourwheel.html)
+
 The files is in the special gh-pages branch you should be using the master branch at [Wheel of Destiny Master branch](https://github.com/robgithub/wheelofdestiny)

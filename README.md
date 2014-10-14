@@ -11,6 +11,7 @@ A html5 canvas &quot;Wheel of Fortune&quot;&trade; random selector
 
 
 [Live demo with four wheels](http://robgithub.github.io/wheelofdestiny/examples/fourwheels.html)
+[Customise your wheel - Live demo](http://robgithub.github.io/wheelofdestiny/examples/buildyourwheel.html)
 
 
 ## Usage
@@ -67,7 +68,7 @@ myWheel.SetTheme(
 
 Defaults are
 ```     
-"Colour1":"#ff0", 
+        "Colour1":"#ff0", 
         "Colour2":"#000",
         "WheelColour":"#fff",
         "FontColour1":"#000",

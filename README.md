@@ -14,7 +14,7 @@ A html5 canvas &quot;Wheel of Fortune&quot;&trade; random selector
 [Customise your wheel - Live demo](http://robgithub.github.io/wheelofdestiny/examples/buildyourwheel.html)
 
 
-## Usage
+## Usage 
 
 Just include the single JavaScript file **wheelofdestiny.js** and pass the constructor method the id of the html element you want to use as the container of the wheel and an array of items to appear on the slices.
 

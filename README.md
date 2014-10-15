@@ -4,9 +4,7 @@ Wheel of Destiny
 A html5 canvas &quot;Wheel of Fortune&quot;&trade; random selector
 
 ![Wheel with pale slices](/images/newoldwebtech.png?raw=true "Wheel example, random web technologies")
-
 ![Wheel true and false](/images/truefalse.png?raw=true "Wheel example, true or false")
-
 ![Wheel with lots of letters](/images/loadsofletters.png?raw=true "Wheel example, single letters a-l")
 
 

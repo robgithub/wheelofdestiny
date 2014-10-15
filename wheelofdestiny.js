@@ -34,7 +34,7 @@ THE SOFTWARE.
 var SPINWHEEL = SPINWHEEL || {};
 
 // create the closure for the instance of the object
-SPINWHEEL.wheelOfDestiny = (function(targetId, list){
+SPINWHEEL.wheelOfDestiny = (function(targetId, list, customTheme){
     // canvas layers array, properties get populated as they are dynamically created
     var canvases = [{"name":'canvasMain'}, {"name":'canvasWheel'}, {"name":'canvasForeground'},{"name":'canvasSelector'}];
     var fps = 14; // anything faster than 14 is unnoticable
@@ -73,6 +73,10 @@ SPINWHEEL.wheelOfDestiny = (function(targetId, list){
         "HighlightColour":"rgba(255,100,100,0.5)",
         "SliceText":"Spin again"
     };
+    
+    if (customTheme) {
+    	theme = customTheme;
+    }
     
     // cannot make public but can expose a setter SetOnCompleted()
     var onCompleted = null;

@@ -236,7 +236,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		var arrayList = [];
 		var listElements = document.querySelectorAll('.list>li');
 		for (var i=0, c=listElements.length;i<c;i++) {
-			arrayList.push(listElements[i].innerText());
+			arrayList.push(listElements[i].innerText);
 		}
 		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
 		instance.SetOnCompleted( declareWinner);

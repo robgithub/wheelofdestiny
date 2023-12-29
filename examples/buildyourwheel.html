@@ -209,8 +209,8 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 	function recreateWheel() {
 		// set size
 	 	let container = document.querySelector('#demo-container');
-	 	container.clientWidth = document.querySelector('#settings-size-x').value;
-	 	container.clientWidth = document.querySelector('#settings-size-y').value;
+	 	container.style.width = document.querySelector('#settings-size-x').value + 'px';
+	 	container.style.height = document.querySelector('#settings-size-y').value + 'px';
 	    let hidden = true;
 		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {
 			hidden = false;

@@ -125,7 +125,12 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 
 	document.querySelector('#btn-generate-uri').onclick = function() {
 		let el = document.querySelector('#url');
-		el.value = window.location;
+		uri = window.location.href.replace('buildyourwheel.html', 'yourwheel.html?');
+		document.querySelectorAll('.list>li')
+		.forEach( (li, i) => {
+		    uri += 's' + i + '=' + li.innerText;
+		});
+		el.value = encodeURI(uri); 
 	};
 	
 	function addItem(item) {

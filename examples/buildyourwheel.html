@@ -138,7 +138,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 	}
 	document.querySelector('#btn-clear-list').onclick = function(){
 		document.querySelector('ul.list').replaceChildren();
-		document.querySelector('#btn-clear-list').hide();
+		document.querySelector('#btn-clear-list').hidden = true;
 		recreateWheel();
 	};
 	document.querySelector('#btn-reset').onclick = function() {
@@ -247,6 +247,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 	}
 
 	resetSettings(true);
+	document.querySelector('#btn-clear-list').hidden = true;
 	
 </script>
 

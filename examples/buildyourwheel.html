@@ -145,18 +145,16 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		resetSettings();
 	};
 	
-	document.querySelectorAll('.size-pixels, #settings-SliceText')
-    	.forEach(input => input.addEventListener('blur', recreateWheel()));
-	document.querySelector('#settings-Font').onchange = function() {
-		recreateWheel();
-	};
+	document.querySelectorAll('.size-pixels, #settings-SliceText, #settings-Font')
+    	.forEach(input => input.addEventListener('change', recreateWheel()));
+    	
 	document.querySelector('#settings-ShowRenderLayers').onchange = function() {
 	    let hidden = true;
 		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {
 			hidden = false;
 		}
 		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
-		    .forEach(el => el.hidden = true);
+		    .forEach(el => el.hidden = hidden);
 	};
 	
 	function resetSettings(start) {

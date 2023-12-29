@@ -113,6 +113,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 <br />
 <input type="button" id="btn-generate-uri" value="Create Unique URL"/><br/>
 <textarea id="url">
+<input type="button" id="btn-generate-copy" value="Copy to clipboard"/><br/>
 </textarea>
 
 <div id="egg">innocuous text</div>
@@ -135,7 +136,11 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		    uri += '&s' + i + '=' + li.innerText;
 		});
 		el.value = encodeURI(uri); 
+		document.querySelector('#btn-generate-copy').hidden = false;
 	};
+	document.querySelector('#btn-generate-copy').onclick = function() {
+    	navigator.clipboard.writeText(document.querySelector('#url').value);
+	}
 	
 	function addItem(item) {
 		if (item) {
@@ -258,6 +263,8 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 
 	resetSettings(true);
 	document.querySelector('#btn-clear-list').hidden = true;
+	document.querySelector('#btn-generate-copy').hidden = true;
+
 	
 </script>
 

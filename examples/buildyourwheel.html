@@ -137,7 +137,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		    uri += '&s' + i + '=' + li.innerText;
 		});
 		el.value = encodeURI(uri); 
-		document.querySelector('#btn-generate-copy').hidden = false;
+		if (uri.startsWith('https'))	document.querySelector('#btn-generate-copy').hidden = false;
 	};
 	document.querySelector('#btn-generate-copy').onclick = function() {
     	navigator.clipboard.writeText(document.querySelector('#url').value);

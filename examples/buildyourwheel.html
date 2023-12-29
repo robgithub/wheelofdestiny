@@ -216,7 +216,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 			hidden = false;
 		}
 		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
-		    .forEach(el => el.hidden = true);
+		    .forEach(el => el.hidden = hidden);
 		// get theme
 		var newTheme = {};
 		var themeValues = document.querySelectorAll('.theme');

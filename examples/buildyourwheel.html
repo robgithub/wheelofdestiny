@@ -122,6 +122,11 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 	document.querySelector('#btn-add').onclick = function() {
 		addItem(document.querySelector('#value').value);
 	};
+
+	document.querySelector('#btn-generate-uri').onclick = function() {
+		let el = document.querySelector('#url');
+		el.value = window.location;
+	};
 	
 	function addItem(item) {
 		if (item) {

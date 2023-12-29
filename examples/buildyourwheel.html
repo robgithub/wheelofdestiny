@@ -25,6 +25,10 @@
 	.instructions { clear:both; margin-top:12px;}
 	.size-pixels {width:4em;}
 	.hidden { display:none; }
+	textarea {
+	    overflow-y:scroll;
+	    height: 4em;
+	}
   </style>
   
 
@@ -128,7 +132,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		uri = window.location.href.replace('buildyourwheel.html', 'yourwheel.html?');
 		document.querySelectorAll('.list>li')
 		.forEach( (li, i) => {
-		    uri += 's' + i + '=' + li.innerText;
+		    uri += '&s' + i + '=' + li.innerText;
 		});
 		el.value = encodeURI(uri); 
 	};

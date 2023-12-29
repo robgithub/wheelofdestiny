@@ -141,9 +141,10 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		resetSettings();
 	};
 	
-	document.querySelectorAll('.size-pixels, #settings-SliceText, #settings-Font')
-    	.forEach(input => input.onchange = recreateWheel());
-    	
+	document.querySelectorAll('.colorpicker, .size-pixels, #settings-SliceText, #settings-Font')
+    	.forEach(el => el.onchange = function() {
+    	    recreateWheel();
+    	});
 	document.querySelector('#settings-ShowRenderLayers').onchange = function() {
 	    let hidden = true;
 		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {

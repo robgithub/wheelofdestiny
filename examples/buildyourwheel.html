@@ -215,8 +215,6 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {
 			hidden = false;
 		}
-		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
-		    .forEach(el => el.hidden = hidden);
 		// get theme
 		var newTheme = {};
 		var themeValues = document.querySelectorAll('.theme');
@@ -235,6 +233,9 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		}
 		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
 		instance.SetOnCompleted( declareWinner);
+		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
+		    .forEach(el => el.hidden = hidden);
+
 	}
 
 	function declareWinner(winner) {

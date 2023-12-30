@@ -55,7 +55,13 @@
 
     function renderWheel() {	
 		let arrayList = getGetParams();
-		let newTheme = {};
+		let newTheme = 
+		{"WheelColour":"#000",
+		"PegColour1":"#f00", 
+        "PegColour2":"#00f",
+        "PointerColour1":"#0ff",
+        "PointerColour2":"#ff0",
+        "CentreColour":"#0f3"};
 		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
 		instance.SetOnCompleted( declareWinner);
     }

@@ -133,6 +133,7 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		let el = document.querySelector('#url');
 		uri = window.location.href.replace('buildyourwheel.html', 'yourwheel.html?');
 		let collection = document.querySelectorAll('.list>li');
+	    el.value = 'Try adding some values';
 		if (collection) {
     		collection.forEach( (li, i) => {
     		    uri += '&s' + i + '=' + li.innerText;
@@ -140,7 +141,6 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		    el.value = encodeURI(uri); 
 		    if (uri.startsWith('https'))	document.querySelector('#btn-generate-copy').hidden = false;
 	    }
-	    el.value = 'Try adding some values';
 	};
 	document.querySelector('#btn-generate-copy').onclick = function() {
     	navigator.clipboard.writeText(document.querySelector('#url').value);

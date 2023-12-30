@@ -29,6 +29,10 @@
 	    overflow-y:scroll;
 	    height: 4em;
 	}
+	.canvasForeground, .canvasWheel, .canvasSelector { 
+		display:none; 
+	}
+
   </style>
   
 
@@ -56,12 +60,21 @@
     function renderWheel() {	
 		let arrayList = getGetParams();
 		let newTheme = 
-		{"WheelColour":"#000",
-		"PegColour1":"#f00", 
-        "PegColour2":"#00f",
-        "PointerColour1":"#0ff",
-        "PointerColour2":"#ff0",
-        "CentreColour":"#0f3"};
+		{
+		    "WheelColour":"#000",
+		    "Colour1":"#f00", 
+		    "Colour2":"#f0f", 
+		    "FontColour1":"#fa0", 
+		    "FontColour2":"#f0a", 
+            "PegColour2":"#00f",
+		    "PegColour1":"#f00", 
+            "PegColour2":"#00f",
+            "PointerColour1":"#0ff",
+            "PointerColour2":"#ff0",
+            "CentreColour":"#0f3",
+            "SliceColour":"#0f3",
+            "HighlightColour":"#0f3"
+        };
 		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
 		instance.SetOnCompleted( declareWinner);
     }

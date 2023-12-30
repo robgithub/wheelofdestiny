@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>wheel of destiny - Your own Wheel</title>
+  <script type='text/javascript' src='../wheelofdestiny.js'></script>
+  
+  <style type='text/css'>
+    body {
+		margin: 0px;
+		padding: 0px;
+		background-color:white;
+		margin-left:20px;
+	}
+	#demo-container { 
+		background-color:#ccc;
+		width:300px;
+		height:300px;
+		display:block;
+		float:left;
+		display:block;
+		left:400px; position:absolute;
+	}
+	
+	.instructions { clear:both; margin-top:12px;}
+	.size-pixels {width:4em;}
+	.hidden { display:none; }
+	textarea {
+	    overflow-y:scroll;
+	    height: 4em;
+	}
+  </style>
+  
+
+
+</head>
+<body>
+<h1>Your own Wheel</h1>
+<br />
+<input type="button" id="btn-spin" value="Spin"/><br/>
+<br />
+<div id="demo-container" ></div>
+<p>Create your own <a href="https://github.com/robgithub/wheelofdestiny">Wheel of Destiny</a></p>
+<p><a href="https://github.com/robgithub/wheelofdestiny">wheelofdestiny</a> Is free for any use and is under the <a href="http://opensource.org/licenses/MIT">MIT licence</a>.</p>
+
+<script type='text/javascript'>
+	
+	document.querySelector('#btn-spin').onclick = function() {
+		instance.Start();
+	};
+	
+	function declareWinner(winner) {
+		alert('And the winner is '+winner);
+	}
+
+    function renderWheel() {	
+		let arrayList = getGetParams();
+		let newTheme = {};
+		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
+		instance.SetOnCompleted( declareWinner);
+    }
+    
+    function getGetParams() {	
+        let uri = new URL(window.location.href);
+        let arr = [];
+        let index = 0;
+        let value = uri.searchParams.get('s' + index);
+        while (value) {
+            arr.push(value);
+        	index++;
+        	value = uri.searchParams.get('s' + index);
+        }
+        if (index===0) {
+            arr.push('???');
+        }
+        return arr;
+    }
+
+    renderWheel();
+    
+</script>
+
+</body>
+
+</html>
+

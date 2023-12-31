@@ -13,22 +13,13 @@
 		margin-left:20px;
 	}
 	#demo-container { 
-		background-color:#ccc;
 		width:300px;
 		height:300px;
 		display:block;
-		float:left;
-		display:block;
-		left:400px; position:absolute;
 	}
 	
-	.instructions { clear:both; margin-top:12px;}
 	.size-pixels {width:4em;}
 	.hidden { display:none; }
-	textarea {
-	    overflow-y:scroll;
-	    height: 4em;
-	}
 	.canvasForeground, .canvasWheel, .canvasSelector { 
 		display:none; 
 	}
@@ -62,19 +53,18 @@
 		let newTheme = 
 		{
 		    "WheelColour":"#000",
-		    "Colour1":"#f00", 
-		    "Colour2":"#f0f", 
-		    "FontColour1":"#fa0", 
-		    "FontColour2":"#f0a", 
-            "PegColour2":"#00f",
+		    "Colour1":"#000", 
+		    "Colour2":"#dd0", 
+		    "FontColour1":"#ff0", 
+		    "FontColour2":"#00a", 
 		    "PegColour1":"#f00", 
             "PegColour2":"#00f",
-            "PointerColour1":"#0ff",
-            "PointerColour2":"#ff0",
-            "CentreColour":"#0f3",
-            "SliceColour":"#0f3",
-            "HighlightColour":"#0f3",
-            "SliceText":"Spin again"
+            "PointerColour1":"#fff",
+            "PointerColour2":"#000",
+            "CentreColour":"#555",
+            "SliceColour":"#005",
+            "HighlightColour":"#ff3",
+            "SliceText":"Spin again!"
         };
 		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
 		instance.SetOnCompleted( declareWinner);

@@ -3,10 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>wheel of destiny - Build your own Wheel Demo</title>
-  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type='text/javascript' src='../wheelofdestiny.js'></script>
-  <link rel="stylesheet" type="text/css" href="http://bgrins.github.com/spectrum/spectrum.css">
-  <script type='text/javascript' src="http://bgrins.github.com/spectrum/spectrum.js"></script>
   
   <style type='text/css'>
     body {
@@ -25,153 +22,17 @@
 		left:400px; position:absolute;
 	}
 	
-	.canvasForeground, .canvasWheel, .canvasSelector { 
-		display:none; 
-	}
-	
 	.instructions { clear:both; margin-top:12px;}
 	.size-pixels {width:4em;}
 	.hidden { display:none; }
+	textarea {
+	    overflow-y:scroll;
+	    height: 4em;
+	}
   </style>
   
 
 
-<script type='text/javascript'>//<![CDATA[ 
-// AGHHH JQUERY !!!!
-$(document).ready( function () {
-	
-	$('#btn-spin').click(function() {
-		instance.Start();
-	});
-	
-	$('.colorpicker').spectrum({
-		showInitial: true,
-		preferredFormat: "rgb",
-		showAlpha : true,
-		chooseText : "set",
-		change : function(value) { recreateWheel(); } 
-	});
-	$('#btn-add').on('click',function() {
-		addItem($('#value').val());
-	});
-	function addItem(item) {
-		if (item) {
-			$('ul.list').append('<li>'+item+'</li>');
-			$('#btn-clear-list').show();
-			recreateWheel();
-		}
-	}
-	$('#btn-clear-list').on('click', function(){
-		$('ul.list>li').remove();
-		$('#btn-clear-list').hide();
-		recreateWheel();
-	});
-	$('#btn-reset').on('click', function() {
-		resetSettings();
-	});
-	
-	$('.size-pixels, #settings-SliceText').on('blur', function() {
-		recreateWheel();
-	});
-	$('#settings-Font').on('change', function() {
-		recreateWheel();
-	});
-	$('#settings-ShowRenderLayers').on('change', function() {
-		if ( $('#settings-ShowRenderLayers').prop('checked') ) {
-			$('.canvasForeground, .canvasWheel, .canvasSelector').show();
-		} else {
-			$('.canvasForeground, .canvasWheel, .canvasSelector').hide();
-		}
-
-	});
-	
-	function resetSettings(start) {
-		if (start) {
-			$('#settings-size-x').val('300');
-			$('#settings-size-y').val('300');
-			$('#settings-ShowRenderLayers').prop('checked','');
-		}
-		$('#settings-Font').val('Arial');
-		$('#settings-SliceText').val('Spin again');
-		$('#settings-colour-Colour1').spectrum('set','rgb(255,255,0)');
-		$('#settings-colour-Colour2').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-WheelColour').spectrum('set','rgb(255,255,255)');
-		$('#settings-colour-FontColour1').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-FontColour2').spectrum('set','rgb(255,255,0)');
-		$('#settings-colour-Slice1Colour').spectrum('set','rgb(0,0,50)');
-		$('#settings-colour-PegColour1').spectrum('set','rgb(255,255,255)');
-		$('#settings-colour-PegColour2').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-PointerColour1').spectrum('set','rgb(255,255,255)');
-		$('#settings-colour-PointerColour2').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-CentreColour').spectrum('set','rgb(100,0,50)');
-		$('#settings-colour-HighlightColour').spectrum('set','rgba(255,100,100,0.5)');
-		recreateWheel();
-	}
-	$('#egg').on('click', function() {
-		setEggValues();
-	});
-	function setEggValues() {
-		addItem('you');
-		addItem('have');
-		addItem('found');
-		addItem('the');
-		addItem('easter');
-		addItem('egg');
-		addItem('!!!');
-
-		$('#settings-Font').val('Arial');
-		$('#settings-SliceText').val('......');
-		$('#settings-colour-Colour1').spectrum('set','rgb(100,255,0)');
-		$('#settings-colour-Colour2').spectrum('set','rgb(100,255,100)');
-		$('#settings-colour-WheelColour').spectrum('set','rgb(0,255,255)');
-		$('#settings-colour-FontColour1').spectrum('set','rgb(0,0,255)');
-		$('#settings-colour-FontColour2').spectrum('set','rgb(0,255,0)');
-		$('#settings-colour-Slice1Colour').spectrum('set','rgb(100,255,100)');
-		$('#settings-colour-PegColour1').spectrum('set','rgba(255,100,100,0.5)');
-		$('#settings-colour-PegColour2').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-PointerColour1').spectrum('set','rgba(255,100,100,0.5)');
-		$('#settings-colour-PointerColour2').spectrum('set','rgb(0,0,0)');
-		$('#settings-colour-CentreColour').spectrum('set','rgba(255,0,0,0.5)');
-		$('#settings-colour-HighlightColour').spectrum('set','rgba(255,255,100,0.5)');
-		recreateWheel();
-	}
-	
-	function recreateWheel() {
-		// set size
-	 	$('#demo-container').css({"width":$('#settings-size-x').val()+'px', "height":$('#settings-size-y').val()+'px' });
-		// set css
-		if ( $('#settings-ShowRenderLayers').prop('checked') ) {
-			$('.canvasForeground, .canvasWheel, .canvasSelector').show();
-		} else {
-			$('.canvasForeground, .canvasWheel, .canvasSelector').hide();
-		}
-		// get theme
-		var newTheme = {};
-		var themeValues = $('.theme');
-		for (var i=0, c=themeValues.length;i<c;i++) {
-			var themeValue = $(themeValues[i]);
-			var valueName = themeValue.attr('id').replace(/.*-/,'');
-			newTheme[valueName] = themeValue.val();
-		}
-
-		// remove and recreate wheel
-		$('#demo-container').children().remove();
-		var arrayList = [];
-		var listElements = $('.list>li');
-		for (var i=0, c=listElements.length;i<c;i++) {
-			arrayList.push($(listElements[i]).text());
-		}
-		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
-		instance.SetOnCompleted( declareWinner);
-	}
-	function declareWinner(winner) {
-		alert('And the winner is '+winner);
-	}
-	resetSettings(true);
-	
-});
-//]]>  
-</script>
 </head>
 <body>
 <h1>Build your own Wheel Demo</h1>
@@ -187,22 +48,22 @@ Wheel of Destiny - Build your own wheel Demo
 <ul class="list">
 
 </ul>
-<input type="button" id="btn-clear-list" class="hidden" value="Clear list" />
+<input type="button" id="btn-clear-list" value="Clear list" />
 
 </div>
 size in pixels x<input id="settings-size-x" class="size-pixels" value="300" type="text">,y<input id="settings-size-y" class="size-pixels" value="300" type="text"><br />
-Colour1 <input type="text" id="settings-colour-Colour1" class="colorpicker theme" value="rgb(255,255,0)"/><br />
-Colour2 <input type="text" id="settings-colour-Colour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
-WheelColour <input type="text" id="settings-colour-WheelColour" class="colorpicker theme" value="rgb(255,255,255)"/><br />
-FontColour1 <input type="text" id="settings-colour-FontColour1" class="colorpicker theme" value="rgb(0,0,0)"/><br />
-FontColour2 <input type="text" id="settings-colour-FontColour2" class="colorpicker theme" value="rgb(255,255,0)"/><br />
-Slice1Colour <input type="text" id="settings-colour-Slice1Colour" class="colorpicker theme" value="rgb(0,0,50)"/><br />
-PegColour1 <input type="text" id="settings-colour-PegColour1" class="colorpicker theme" value="rgb(255,255,255)"/><br />
-PegColour2 <input type="text" id="settings-colour-PegColour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
-PointerColour1 <input type="text" id="settings-colour-PointerColour1" class="colorpicker theme" value="rgb(255,255,255)"/><br />
-PointerColour2 <input type="text" id="settings-colour-PointerColour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
-CentreColour <input type="text" id="settings-colour-CentreColour" class="colorpicker theme" value="rgb(100,0,50)"/><br />
-HighlightColour <input type="text" id="settings-colour-HighlightColour" class="colorpicker theme" value="rgba(255,100,100,0.5)"/><br />
+Colour1 <input type="color" id="settings-colour-Colour1" class="colorpicker theme" value="rgb(255,255,0)"/><br />
+Colour2 <input type="color" id="settings-colour-Colour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
+WheelColour <input type="color" id="settings-colour-WheelColour" class="colorpicker theme" value="rgb(255,255,255)"/><br />
+FontColour1 <input type="color" id="settings-colour-FontColour1" class="colorpicker theme" value="rgb(0,0,0)"/><br />
+FontColour2 <input type="color" id="settings-colour-FontColour2" class="colorpicker theme" value="rgb(255,255,0)"/><br />
+Slice1Colour <input type="color" id="settings-colour-Slice1Colour" class="colorpicker theme" value="rgb(0,0,50)"/><br />
+PegColour1 <input type="color" id="settings-colour-PegColour1" class="colorpicker theme" value="rgb(255,255,255)"/><br />
+PegColour2 <input type="color" id="settings-colour-PegColour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
+PointerColour1 <input type="color" id="settings-colour-PointerColour1" class="colorpicker theme" value="rgb(255,255,255)"/><br />
+PointerColour2 <input type="color" id="settings-colour-PointerColour2" class="colorpicker theme" value="rgb(0,0,0)"/><br />
+CentreColour <input type="color" id="settings-colour-CentreColour" class="colorpicker theme" value="rgb(100,0,50)"/><br />
+HighlightColour <input type="color" id="settings-colour-HighlightColour" class="colorpicker theme" value="rgba(255,100,100,0.5)"/><br />
 Font  <select id="settings-Font" class="theme">
 <option>cursive</option>
 <option>monospace</option>
@@ -248,11 +109,170 @@ Show Render Layers <input id="settings-ShowRenderLayers" checked="" type="checkb
 		<p>Result is alerted when reached.</p>
 		<br/>
 		<p><a href="https://github.com/robgithub/wheelofdestiny">wheelofdestiny</a> Is free for any use and is under the <a href="http://opensource.org/licenses/MIT">MIT licence</a>.</p>
-		<p>This demo uses the excellent <a href="http://bgrins.github.io/spectrum/">Spectrum</a> colour picker</p>
 	</div>
 <br />
-<div id="egg">innocuous text</div>
-</body>
-</html>
+<input type="button" id="btn-generate-uri" value="Create Unique URL"/><br/>
+<textarea id="url">
+</textarea>
+<input type="button" id="btn-generate-copy" value="Copy to clipboard"/><br/>
 
+
+<div id="egg">innocuous text</div>
+
+<script type='text/javascript'>
+	
+	document.querySelector('#btn-spin').onclick = function() {
+		instance.Start();
+	};
+	
+	document.querySelector('#btn-add').onclick = function() {
+		addItem(document.querySelector('#value').value);
+	};
+
+	document.querySelector('#btn-generate-uri').onclick = function() {
+		let el = document.querySelector('#url');
+		uri = window.location.href.replace('buildyourwheel.html', 'yourwheel.html?');
+		let collection = document.querySelectorAll('.list>li');
+	    el.value = 'Try adding some values';
+		if (collection) {
+    		collection.forEach( (li, i) => {
+    		    uri += '&s' + i + '=' + li.innerText;
+	    	});
+		    el.value = encodeURI(uri); 
+		    if (uri.startsWith('https'))	document.querySelector('#btn-generate-copy').hidden = false;
+	    }
+	};
+	document.querySelector('#btn-generate-copy').onclick = function() {
+    	navigator.clipboard.writeText(document.querySelector('#url').value);
+	}
+	
+	function addItem(item) {
+		if (item) {
+    		let el = document.createElement('li');
+	    	el.innerText = item;
+			document.querySelector('ul.list').append(el);
+			document.querySelector('#btn-clear-list').hidden = false;
+			recreateWheel();
+		}
+	}
+	document.querySelector('#btn-clear-list').onclick = function(){
+		document.querySelector('ul.list').replaceChildren();
+		document.querySelector('#btn-clear-list').hidden = true;
+		recreateWheel();
+	};
+	document.querySelector('#btn-reset').onclick = function() {
+		resetSettings();
+	};
+	
+	document.querySelectorAll('.colorpicker, .size-pixels, #settings-SliceText, #settings-Font')
+    	.forEach(el => el.onchange = function() {
+    	    recreateWheel();
+    	});
+	document.querySelector('#settings-ShowRenderLayers').onchange = function() {
+	    let hidden = true;
+		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {
+			hidden = false;
+		}
+		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
+		    .forEach(el => el.hidden = hidden);
+	};
+	
+	function resetSettings(start) {
+		if (start) {
+			document.querySelector('#settings-size-x').value = '300';
+			document.querySelector('#settings-size-y').value = '300';
+			document.querySelector('#settings-ShowRenderLayers').checked = false;
+		}
+		document.querySelector('#settings-Font').value = 'Arial';
+		document.querySelector('#settings-SliceText').value = 'Spin again';
+		document.querySelector('#settings-colour-Colour1').value = '#ffff00';
+		document.querySelector('#settings-colour-Colour2').value = '#000000';
+		document.querySelector('#settings-colour-WheelColour').value = '#ffffff';
+		document.querySelector('#settings-colour-FontColour1').value = '#000000';
+		document.querySelector('#settings-colour-FontColour2').value = '#ffff00';
+		document.querySelector('#settings-colour-Slice1Colour').value = '#000088';
+		document.querySelector('#settings-colour-PegColour1').value = '#ffffff';
+		document.querySelector('#settings-colour-PegColour2').value = '#000000';
+		document.querySelector('#settings-colour-PointerColour1').value = '#ffffff';
+		document.querySelector('#settings-colour-PointerColour2').value = '#000000';
+		document.querySelector('#settings-colour-CentreColour').value = '#aa0088';
+		document.querySelector('#settings-colour-HighlightColour').value = '#ffaaaa';
+		recreateWheel();
+	}
+	document.querySelector('#egg').onclick = function() {
+		setEggValues();
+	};
+	function setEggValues() {
+		addItem('you');
+		addItem('have');
+		addItem('found');
+		addItem('the');
+		addItem('easter');
+		addItem('egg');
+		addItem('!!!');
+
+		document.querySelector('#settings-Font').value = 'Arial';
+		document.querySelector('#settings-SliceText').value = '......';
+		document.querySelector('#settings-colour-Colour1').value = '#aaff00';
+		document.querySelector('#settings-colour-Colour2').value = '#aaffaa';
+		document.querySelector('#settings-colour-WheelColour').value = '#00ffff';
+		document.querySelector('#settings-colour-FontColour1').value = '#0000ff';
+		document.querySelector('#settings-colour-FontColour2').value = '#00ff00';
+		document.querySelector('#settings-colour-Slice1Colour').value = '#aaffaa';
+		document.querySelector('#settings-colour-PegColour1').value = '#ffaaaa';
+		document.querySelector('#settings-colour-PegColour2').value = '#000000';
+		document.querySelector('#settings-colour-PointerColour1').value = '#ffaaaa';
+		document.querySelector('#settings-colour-PointerColour2').value = '#000000';
+		document.querySelector('#settings-colour-CentreColour').value = '#ff0000';
+		document.querySelector('#settings-colour-HighlightColour').value = '#ffffaa';
+
+		recreateWheel();
+	}
+	
+	function recreateWheel() {
+		// set size
+	 	let container = document.querySelector('#demo-container');
+	 	container.style.width = document.querySelector('#settings-size-x').value + 'px';
+	 	container.style.height = document.querySelector('#settings-size-y').value + 'px';
+	    let hidden = true;
+		if ( document.querySelector('#settings-ShowRenderLayers').checked ) {
+			hidden = false;
+		}
+		// get theme
+		var newTheme = {};
+		var themeValues = document.querySelectorAll('.theme');
+		for (var i=0, c=themeValues.length;i<c;i++) {
+			var themeValue = themeValues[i];
+			var valueName = themeValue.id.replace(/.*-/,'');
+			newTheme[valueName] = themeValue.value;
+		}
+
+		// remove and recreate wheel
+		document.querySelector('#demo-container').replaceChildren();
+		var arrayList = [];
+		var listElements = document.querySelectorAll('.list>li');
+		for (var i=0, c=listElements.length;i<c;i++) {
+			arrayList.push(listElements[i].innerText);
+		}
+		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
+		instance.SetOnCompleted( declareWinner);
+		document.querySelectorAll('.canvasForeground, .canvasWheel, .canvasSelector')
+		    .forEach(el => el.hidden = hidden);
+
+	}
+
+	function declareWinner(winner) {
+		alert('And the winner is '+winner);
+	}
+
+	resetSettings(true);
+	document.querySelector('#btn-clear-list').hidden = true;
+	document.querySelector('#btn-generate-copy').hidden = true;
+
+	
+</script>
+
+</body>
+
+</html>
 

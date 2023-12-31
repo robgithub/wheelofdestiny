@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>wheel of destiny - Your own Wheel</title>
+  <script type='text/javascript' src='../wheelofdestiny.js'></script>
+  
+  <style type='text/css'>
+    body {
+		margin: 0px;
+		padding: 0px;
+		background-color:white;
+		margin-left:20px;
+	}
+	#demo-container { 
+		width:300px;
+		height:300px;
+		display:block;
+	}
+	
+	.size-pixels {width:4em;}
+	.hidden { display:none; }
+	.canvasForeground, .canvasWheel, .canvasSelector { 
+		display:none; 
+	}
+
+  </style>
+  
+
+
+</head>
+<body>
+<h1>Your own Wheel</h1>
+<br />
+<input type="button" id="btn-spin" value="Spin"/><br/>
+<br />
+<div id="demo-container" ></div>
+<p>Create your own <a href="https://github.com/robgithub/wheelofdestiny">Wheel of Destiny</a></p>
+<p><a href="https://github.com/robgithub/wheelofdestiny">wheelofdestiny</a> Is free for any use and is under the <a href="http://opensource.org/licenses/MIT">MIT licence</a>.</p>
+
+<script type='text/javascript'>
+	
+	document.querySelector('#btn-spin').onclick = function() {
+		instance.Start();
+	};
+	
+	function declareWinner(winner) {
+		alert('And the winner is '+winner);
+	}
+
+    function renderWheel() {	
+		let arrayList = getGetParams();
+		let newTheme = 
+		{
+		    "WheelColour":"#000",
+		    "Colour1":"#000", 
+		    "Colour2":"#dd0", 
+		    "FontColour1":"#ff0", 
+		    "FontColour2":"#00a", 
+		    "PegColour1":"#f00", 
+            "PegColour2":"#00f",
+            "PointerColour1":"#fff",
+            "PointerColour2":"#000",
+            "CentreColour":"#555",
+            "SliceColour":"#005",
+            "HighlightColour":"#ff3",
+            "SliceText":"Spin again!"
+        };
+		instance = SPINWHEEL.wheelOfDestiny('demo-container', arrayList, newTheme);
+		instance.SetOnCompleted( declareWinner);
+    }
+    
+    function getGetParams() {	
+        let uri = new URL(window.location.href);
+        let arr = [];
+        let index = 0;
+        let value = uri.searchParams.get('s' + index);
+        while (value) {
+            arr.push(value);
+        	index++;
+        	value = uri.searchParams.get('s' + index);
+        }
+        if (index===0) {
+            arr.push('???');
+        }
+        return arr;
+    }
+
+    renderWheel();
+    
+</script>
+
+</body>
+
+</html>
+

@@ -8,9 +8,11 @@ A html5 canvas &quot;Wheel of Fortune&quot;&trade; random selector
 ![Wheel with lots of letters](/images/loadsofletters.png?raw=true "Wheel example, single letters a-l")
 
 
-[Live demo with four wheels](http://robgithub.github.io/wheelofdestiny/examples/fourwheels.html)
+[Live demo with four wheels](https://robgithub.github.io/wheelofdestiny/examples/fourwheels.html)
 
-[Customise your wheel - Live demo](http://robgithub.github.io/wheelofdestiny/examples/buildyourwheel.html)
+[Customise your wheel - Live demo](https://robgithub.github.io/wheelofdestiny/examples/buildyourwheel.html)
+
+[Example Your wheel - Live demo](https://robgithub.github.io/wheelofdestiny/examples/yourwheel.html?&s0=McDonalds&s1=Wendys&s2=GDK&s3=Burger%20king&s4=Tesco&s5=Kommune)
 
 
 ## Usage 
@@ -94,6 +96,8 @@ offer 90 degree text(per letter)
 more comments
 
 minified version
+
+include colours etc into Your Wheel
 
 Issue :
 low number of slices has pointer angled at speed but not hit

@@ -3,7 +3,6 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>wheel of destiny - four wheels Demo</title>
-  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type='text/javascript' src='../wheelofdestiny.js'></script>
   
   <style type='text/css'>
@@ -45,54 +44,7 @@
   
 
 
-<script type='text/javascript'>//<![CDATA[ 
-// AGHHH JQUERY !!!!
-$(document).ready( function () {
-	var instance1 = SPINWHEEL.wheelOfDestiny('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
-	instance1.SetOnCompleted(displayWinner1);
-	var instance2 = SPINWHEEL.wheelOfDestiny('container2',  ['Heads','Tails']);
-	instance2.SetOnCompleted(displayWinner2);
-	var instance3 = SPINWHEEL.wheelOfDestiny('container3', ['Alpha','Beta', 'Gamma', 'Delta']);
-	instance3.SetOnCompleted(displayWinner3);
-	var instance4 = SPINWHEEL.wheelOfDestiny('container4', ['a','b','c','d','e','f','g','h','i','j','k','l']);
-	instance4.SetOnCompleted(displayWinner4);
 
-	instance1.SetTheme({"HighlightColour":"rgba(255,255,0,0.5)"});
-	instance2.SetTheme({
-		"FontColour2":"#fff", 
-		"Slice1Colour":"#000",
-		"Colour1":"#cf0", 
-        "Colour2":"#000",});
-	instance3.SetTheme({"WheelColour":"#000",
-		"PegColour1":"#f00", 
-        "PegColour2":"#00f",
-        "PointerColour1":"#0ff",
-        "PointerColour2":"#ff0",
-        "CentreColour":"#0f3"});
-	instance4.SetTheme({"Font":"Times"});
-	$('#btn-spin').click(function() {
-		$('.value').text('+');
-		instance1.Start();
-		instance2.Start();
-		instance3.Start();
-		instance4.Start();
-	});
-
-	function displayWinner1(winner) {
-		$('#info1').text(winner);
-	}
-	function displayWinner2(winner) {
-		$('#info2').text(winner);
-	}
-	function displayWinner3(winner) {
-		$('#info3').text(winner);
-	}
-	function displayWinner4(winner) {
-		$('#info4').text(winner);
-	}
-});
-//]]>  
-</script>
 </head>
 <body>
 <h1>Four Wheels Demo</h1>
@@ -132,6 +84,50 @@ Wheel of Destiny
 		<br/>
 		<p><a href="https://github.com/robgithub/wheelofdestiny">wheelofdestiny</a> Is free for any use and is under the <a href="http://opensource.org/licenses/MIT">MIT licence</a>.</p>
 	</div>
+	<script type='text/javascript'>
+	
+	var instance1 = SPINWHEEL.wheelOfDestiny('container1', ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday', 'Sunday']);
+    instance1.SetOnCompleted(displayWinner1);
+    var instance2 = SPINWHEEL.wheelOfDestiny('container2', ['Heads','Tails']);
+    instance2.SetOnCompleted(displayWinner2);
+    var instance3 = SPINWHEEL.wheelOfDestiny('container3', ['Alpha','Beta', 'Gamma', 'Delta']);
+    instance3.SetOnCompleted(displayWinner3);
+    var instance4 = SPINWHEEL.wheelOfDestiny('container4', ['a','b','c','d','e','f','g','h','i','j','k','l']);
+    instance4.SetOnCompleted(displayWinner4);
+
+	instance1.SetTheme({"HighlightColour":"rgba(255,255,0,0.5)"});
+	instance2.SetTheme({
+		"FontColour2":"#fff", 
+		"Slice1Colour":"#000",
+		"Colour1":"#cf0", 
+        "Colour2":"#000",});
+	instance3.SetTheme({"WheelColour":"#000",
+		"PegColour1":"#f00", 
+        "PegColour2":"#00f",
+        "PointerColour1":"#0ff",
+        "PointerColour2":"#ff0",
+        "CentreColour":"#0f3"});
+	instance4.SetTheme({"Font":"Times"});
+	document.querySelector('#btn-spin').onclick = function() {
+		instance1.Start();
+		instance2.Start();
+		instance3.Start();
+		instance4.Start();
+	};
+
+	function displayWinner1(winner) {
+		document.querySelector('#info1').innerText = winner;
+	}
+	function displayWinner2(winner) {
+		document.querySelector('#info2').innerText = winner;
+	}
+	function displayWinner3(winner) {
+		document.querySelector('#info3').innerText = winner;
+	}
+	function displayWinner4(winner) {
+		document.querySelector('#info4').innerText = winner;
+	}
+</script>
 </body>
   
 </html>
